@@ -47,4 +47,8 @@ public class Airline {
             return false;
         }
     }
+
+    public Flight[] getFlight() {
+        return new Flight[0];
+    }
 }

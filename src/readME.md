@@ -1,66 +1,157 @@
 # Airline Reservation System
 
-## Overview
-The Airline Reservation System is a simple Java application for managing flight reservations. 
-It allows users to add flights, book flights, cancel bookings, and view the list of available flights along with the number of available seats.
+This is a console-based Airline Reservation System implemented in Java. The system allows users to register, log in, and perform various operations related to airline reservations based on their roles (admin or passenger).
 
 ## Features
-- Add a new flight to the airline.
-- List all available flights.
-- Book a seat on a flight.
-- Cancel a booking on a flight.
 
-## Requirements
-- JDK 8 or higher
--Maven 
-- Git
+- **User Registration**: Users can register with a username, password, and role (admin or passenger).
+- **User Login**: Users can log in with their registered username and password.
+- **Role-based Access Control**:
+    - **Admins**: Can add new flights.
+    - **Passengers**: Can book and cancel flight reservations.
+- **Flight Management**: Admins can add flights with details such as flight number, departure location, destination location, and capacity.
+- **Booking Management**: Users can book seats on available flights and cancel their bookings.
 
-## Installation
-1. Clone the repository or download the source code.
-   '''bash 
-   git clone https://github.com/ShaunTanner1/AirlineReservationSystem.git
-   cd airline-reservation-system
-2. Compile and run the application.
+## Classes and Methods
+
+### `User`
+
+Represents a user with a username, password, and role.
+
+#### Fields
+- `String username`
+- `String password`
+- `String role`
+
+#### Methods
+- `User(String username, String password, String role)`
+- `String getUsername()`
+- `boolean checkPassword(String password)`
+- `String getRole()`
+
+### `UserManagement`
+
+Manages user registration and login.
+
+#### Fields
+- `Map<String, User> users`
+
+#### Methods
+- `UserManagement()`
+- `boolean registerUser(String username, String password, String role)`
+- `User loginUser(String username, String password)`
+- `User getUser(String username)`
+
+### `Flight`
+
+Represents a flight with a flight number, departure location, destination location, capacity, and booked seats.
+
+#### Fields
+- `String flightNumber`
+- `String departure`
+- `String destination`
+- `int capacity`
+- `int bookedSeats`
+
+#### Methods
+- `Flight(String flightNumber, String departure, String destination, int capacity)`
+- `String getFlightNumber()`
+- `String getDeparture()`
+- `String getDestination()`
+- `int getCapacity()`
+- `int getBookedSeats()`
+- `int getAvailableSeats()`
+- `boolean bookSeat()`
+- `boolean cancelSeat()`
+- `String toString()`
+
+### `Airline`
+
+Manages flights and bookings.
+
+#### Fields
+- `List<Flight> flights`
+
+#### Methods
+- `Airline()`
+- `void addFlight(Flight flight)`
+- `Flight findFlight(String flightNumber)`
+- `boolean bookFlight(String flightNumber)`
+- `boolean cancelFlight(String flightNumber)`
+- `List<Flight> getFlights()`
+
+### `Main`
+
+The main class that drives the application, including the user interface for registering, logging in, and performing operations based on user roles.
+
+#### Methods
+- `public static void main(String[] args)`
+- `private static void register(Scanner scanner)`
+- `private static boolean login(Scanner scanner)`
+- `private static void showMenu(Scanner scanner)`
+- `private static void addFlight(Scanner scanner)`
+- `private static void listAvailableFlights()`
+- `private static void bookFlight(Scanner scanner)`
+- `private static void cancelBooking(Scanner scanner)`
+
+## How to Run
+
+1. **Compile the Java files:**
+javac User.java UserManagement.java Flight.java Airline.java Main.java
+2. Run the 'main' class:
+java Main
 
 ## Usage
-1. Run the application.
-   java Main
-2. Follow the on-screen menu to manage flight reservations:
----Airline Reservation System:---
-1. Add a new flight
-2. List all available flights
-3. Book a seat on a flight
-4. Cancel a booking on a flight
-5. Exit
 
-## Examples
--Adding a flight:
-Enter flight number: AA101
-Enter departure: London
-Enter destination: Paris
-Enter capacity: 150
-Flight added successfully
+1. Register a new user:
+   - Select option '1' from the main menu.
+   - Enter username, password, and role (either 'admin' or 'passenger').
+2. Login:
+   - Select option '2' from the main menu.
+   - Enter username and password.
+3. Admin Operations:
+   - After logging in as an admin, select option '1' to add a flight.
+   - Enter flight details (flight number, departure location, destination location, and capacity).
+4. Passenger Operations:
+   - After logging in as a passenger, select options '2', '3', or '4' to list available flights, 
+     book a flight, or cancel a booking, respectively.
+5. Logout:
+   - Select option '5' from the main menu to log out.
 
--Booking a flight:
-Enter flight number: AA101
-Enter seat number: 1
-Seat booked successfully
+## Example
 
--List all available flights:
-Available flights:
-Flight number: AA101, departure: London, 
-destination: Paris, capacity: 150, booked seats: 1, available seats: 149
+1. Register
+2. Login
+3. Exit
+   Enter choice: 1
+   Enter username: user1
+   Enter password: pass1
+   Enter role (admin/passenger): passenger
+   Registration successful.
 
-## File structure
+1. Register
+2. Login
+3. Exit
+   Enter choice: 2
+   Enter username: user1
+   Enter password: pass1
+   Login successful.
 
-- src
-    - main
-        - java
-            - Airline.java
-            - Flight.java
-            - Main.java
-            - Readme.md
-- pom.xml
+Airline Reservation System:
+1. Add Flight (admin only)
+2. List Available Flights
+3. Book Flight
+4. Cancel Booking
+5. Logout
+   Enter choice: 2
+   [No flights available]
 
-## Contributions
-Contributions are welcome! Please feel free to submit a pull request or open an issue.
+Enter choice: 5
+Logged out.
+
+
+## Planned Enhancements
+- Password encryption
+- Data Persistence
+- Improvement of UI
+- Flight Search
