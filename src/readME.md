@@ -48,7 +48,8 @@ Seat booked successfully
 
 -List all available flights:
 Available flights:
-Flight number: AA101, departure: London, destination: Paris, capacity: 150, booked seats: 1, available seats: 149
+Flight number: AA101, departure: London, 
+destination: Paris, capacity: 150, booked seats: 1, available seats: 149
 
 ## File structure
 
