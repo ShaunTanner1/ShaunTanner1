@@ -12,6 +12,8 @@ view the list of available and borrowed books.
 - List all borrowed books.
 - Borrow a book from the library.
 - Return a borrowed book to the library.
+- Add a new user to the library.
+- List all users.
 
 ## Requirements
 - Java 8
@@ -37,8 +39,10 @@ java Main
 3. List Borrowed Books
 4. Borrow Book
 5. Return Book
-6. Exit
-Enter your choice:
+6. Add User
+7. List Users
+8. Exit
+
 
 ## Examples 
 Adding a new book:
@@ -46,6 +50,11 @@ Enter book title: The Great Gatsby
 Enter book author's first name: F. Scott 
 Enter book author's last name: Fitzgerald
 Book added successfully.
+
+Adding a new user:
+Enter user name: John Smith
+Enter user ID: 1234
+User added successfully.
 
 Borrowing a book:
 Enter book title to borrow: The Great Gatsby
@@ -56,12 +65,17 @@ Available books:
 Title: The Great Gatsby, Author: F. Scott Fitzgerald, Borrowed: true
 Title: The Catcher in the Rye, Author: J. D. Salinger, Borrowed: false
 
+Listing Users:
+Users:
+Name: John Smith, ID: 1234
+
 ## File Structure
 
 ```
 library-management-system
 ├── Book.java
 ├── Library.java
+├── User.java
 ├── Main.java
 └── README.md
 ```

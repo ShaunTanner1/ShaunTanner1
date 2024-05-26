@@ -3,9 +3,11 @@ import java.util.List;
 
 public class Library {
     private List<Book> books;
+    private List<User> users;
 
     public Library() {
         this.books = new ArrayList<>();
+        this.users = new ArrayList<>();
     }
 
     public void addBook(Book book) {
@@ -53,5 +55,24 @@ public class Library {
         } else {
             System.out.println("Book not found.");
         }
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+    }
+
+    public void listUsers() {
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    public User findUser(String id) {
+        for (User user : users) {
+            if (user.getId().equalsIgnoreCase(id)) {
+                return user;
+            }
+        }
+        return null;
     }
 }

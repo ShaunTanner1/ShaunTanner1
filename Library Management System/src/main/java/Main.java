@@ -15,7 +15,9 @@ public class Main {
             System.out.println("3. List Borrowed Books: ");
             System.out.println("4. Borrow Book: ");
             System.out.println("5. Return Book: ");
-            System.out.println("6. Exit");
+            System.out.println("6. Add User: ");
+            System.out.println("7. List Users: ");
+            System.out.println("8. Exit");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -48,6 +50,18 @@ public class Main {
                     library.returnBook(title);
                     break;
                 case 6:
+                    System.out.print("Enter user name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter user ID: ");
+                    String id = scanner.nextLine();
+                    library.addUser(new User(name, id));
+                    System.out.println("User added successfully.");
+                    break;
+                case 7:
+                    System.out.println("Users: ");
+                    library.listUsers();
+                    break;
+                case 8:
                     exit = true;
                     break;
                 default:

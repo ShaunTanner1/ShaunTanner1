@@ -1,12 +1,16 @@
+
+
 public class Book {
     private String title;
     private String author;
     private boolean isBorrowed;
+    private User borrowedBy;
 
     public Book(String title, String author) {
         this.title = title;
         this.author = author;
         this.isBorrowed = false;
+        this.borrowedBy = null;
     }
 
     public String getTitle() {
@@ -37,9 +41,13 @@ public class Book {
         }
     }
 
+    public User getBorrowedBy() {
+        return borrowedBy;
+    }
+
     @Override
     public String toString() {
-        return "Title: " + title + ", Author: " + author + ", Borrowed: " + isBorrowed;
+        return "Title: " + title + ", " + "Author: " + author + ", Borrowed: " + isBorrowed() + (isBorrowed() ? " by " + borrowedBy.getName() : "");
     }
 
 }
